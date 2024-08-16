@@ -1,0 +1,68 @@
+CRITICAL - 2024-06-09 13:45:58 --> ErrorException: unserialize(): Error at offset 2 of 21 bytes
+[Method: GET, Route: /]
+in SYSTEMPATH\DataCaster\Cast\ArrayCast.php on line 34.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'unserialize(): Error at offset 2 of 21 bytes', 'D:\\laragon\\www\\courette\\system\\DataCaster\\Cast\\ArrayCast.php', 34)
+ 2 SYSTEMPATH\DataCaster\Cast\ArrayCast.php(34): unserialize('s:26:"["CAS","POE"]";', [...])
+ 3 SYSTEMPATH\DataCaster\DataCaster.php(186): CodeIgniter\DataCaster\Cast\ArrayCast::get('s:26:"["CAS","POE"]";', [], Object(CodeIgniter\Database\MySQLi\Connection))
+ 4 SYSTEMPATH\DataConverter\DataConverter.php(80): CodeIgniter\DataCaster\DataCaster->castAs('s:26:"["CAS","POE"]";', 'REC_LISTE_USTENSILE', 'get')
+ 5 SYSTEMPATH\BaseModel.php(1944): CodeIgniter\DataConverter\DataConverter->fromDataSource([...])
+ 6 SYSTEMPATH\Model.php(280): CodeIgniter\BaseModel->convertToReturnType([...], 'array')
+ 7 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 8 APPPATH\Models\RecetteModel.php(34): CodeIgniter\BaseModel->findAll()
+ 9 APPPATH\Controllers\RecetteController.php(23): App\Models\RecetteModel->findAllActive()
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->index()
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-09 13:47:10 --> CodeIgniter\DataCaster\Exceptions\CastException: Syntax error, malformed JSON.
+[Method: GET, Route: /]
+in SYSTEMPATH\Entity\Exceptions\CastException.php on line 50.
+ 1 SYSTEMPATH\DataCaster\Cast\JsonCast.php(44): CodeIgniter\Entity\Exceptions\CastException::forInvalidJsonFormat(4)
+ 2 SYSTEMPATH\DataCaster\DataCaster.php(186): CodeIgniter\DataCaster\Cast\JsonCast::get('Je suis la liste des ustensile', [...], Object(CodeIgniter\Database\MySQLi\Connection))
+ 3 SYSTEMPATH\DataConverter\DataConverter.php(80): CodeIgniter\DataCaster\DataCaster->castAs('Je suis la liste des ustensile', 'REC_LISTE_USTENSILE', 'get')
+ 4 SYSTEMPATH\BaseModel.php(1944): CodeIgniter\DataConverter\DataConverter->fromDataSource([...])
+ 5 SYSTEMPATH\Model.php(280): CodeIgniter\BaseModel->convertToReturnType([...], 'array')
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RecetteModel.php(34): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RecetteController.php(23): App\Models\RecetteModel->findAllActive()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->index()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-09 13:47:45 --> CodeIgniter\DataCaster\Exceptions\CastException: Syntax error, malformed JSON.
+[Method: GET, Route: /]
+in SYSTEMPATH\Entity\Exceptions\CastException.php on line 50.
+ 1 SYSTEMPATH\DataCaster\Cast\JsonCast.php(44): CodeIgniter\Entity\Exceptions\CastException::forInvalidJsonFormat(4)
+ 2 SYSTEMPATH\DataCaster\DataCaster.php(186): CodeIgniter\DataCaster\Cast\JsonCast::get('[Casserole]', [...], Object(CodeIgniter\Database\MySQLi\Connection))
+ 3 SYSTEMPATH\DataConverter\DataConverter.php(80): CodeIgniter\DataCaster\DataCaster->castAs('[Casserole]', 'REC_LISTE_USTENSILE', 'get')
+ 4 SYSTEMPATH\BaseModel.php(1944): CodeIgniter\DataConverter\DataConverter->fromDataSource([...])
+ 5 SYSTEMPATH\Model.php(280): CodeIgniter\BaseModel->convertToReturnType([...], 'array')
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RecetteModel.php(34): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RecetteController.php(23): App\Models\RecetteModel->findAllActive()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->index()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-09 13:49:08 --> TypeError: CodeIgniter\DataCaster\Cast\JsonCast::get(): Return value must be of type stdClass|array, string returned
+[Method: GET, Route: /]
+in SYSTEMPATH\DataCaster\Cast\JsonCast.php on line 47.
+ 1 SYSTEMPATH\DataCaster\DataCaster.php(186): CodeIgniter\DataCaster\Cast\JsonCast::get('"[\\"CAS\\",\\"LOU\\"]"', [...], Object(CodeIgniter\Database\MySQLi\Connection))
+ 2 SYSTEMPATH\DataConverter\DataConverter.php(80): CodeIgniter\DataCaster\DataCaster->castAs('"[\\"CAS\\",\\"LOU\\"]"', 'REC_LISTE_USTENSILE', 'get')
+ 3 SYSTEMPATH\BaseModel.php(1944): CodeIgniter\DataConverter\DataConverter->fromDataSource([...])
+ 4 SYSTEMPATH\Model.php(280): CodeIgniter\BaseModel->convertToReturnType([...], 'array')
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\RecetteModel.php(34): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\RecetteController.php(23): App\Models\RecetteModel->findAllActive()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,0 +1,21 @@
+CRITICAL - 2024-07-07 09:51:33 --> ParseError: syntax error, unexpected token ","
+[Method: GET, Route: recettes/detail/27]
+in APPPATH\Views\modals\modal-follow-recette.php on line 28.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\View\View.php(484): CodeIgniter\View\View->render('modals/modal-follow-recette', null, true)
+ 3 APPPATH\Views\recette\detail.php(62): CodeIgniter\View\View->include('modals/modal-follow-recette')
+ 4 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\recette\\detail.php')
+ 5 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('recette/detail', [], true)
+ 7 APPPATH\Views\template\layout.php(16): view('recette/detail', [...])
+ 8 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\template\\layout.php')
+ 9 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+10 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template/layout', [], true)
+11 APPPATH\Controllers\BaseController.php(67): view('template/layout', [...])
+12 APPPATH\Controllers\RecetteController.php(40): App\Controllers\BaseController->showView('recette/detail', [...])
+13 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->detail(27)
+14 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+15 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+16 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+18 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

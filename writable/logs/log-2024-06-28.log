@@ -1,0 +1,48 @@
+CRITICAL - 2024-06-28 08:36:42 --> ErrorException: Cannot declare class App\Models\RecetteModel, because the name is already in use
+[Method: GET, Route: recettes/detail/27]
+in APPPATH\Models\IngredientModel.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-06-28 08:36:53 --> CodeIgniter\DataCaster\Exceptions\CastException: Syntax error, malformed JSON.
+[Method: GET, Route: recettes/detail/27]
+in SYSTEMPATH\Entity\Exceptions\CastException.php on line 50.
+ 1 SYSTEMPATH\DataCaster\Cast\JsonCast.php(44): CodeIgniter\Entity\Exceptions\CastException::forInvalidJsonFormat(4)
+ 2 SYSTEMPATH\DataCaster\DataCaster.php(186): CodeIgniter\DataCaster\Cast\JsonCast::get('[JAN,FEV,MAR,AVR,MAI,JUN,JUL,AOU,SEP,OCT,NOV,DEC]', [...], Object(CodeIgniter\Database\MySQLi\Connection))
+ 3 SYSTEMPATH\DataConverter\DataConverter.php(80): CodeIgniter\DataCaster\DataCaster->castAs('[JAN,FEV,MAR,AVR,MAI,JUN,JUL,AOU,SEP,OCT,NOV,DEC]', 'ING_LISTEMOISSAISON', 'get')
+ 4 SYSTEMPATH\BaseModel.php(1944): CodeIgniter\DataConverter\DataConverter->fromDataSource([...])
+ 5 SYSTEMPATH\Model.php(280): CodeIgniter\BaseModel->convertToReturnType([...], 'array')
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\IngredientModel.php(31): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RecetteController.php(24): App\Models\IngredientModel->findAllActive()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->detail('27')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-28 09:48:04 --> TypeError: App\Controllers\AjaxController::editIngredientRecette(): Return value must be of type string, CodeIgniter\HTTP\Response returned
+[Method: POST, Route: recettes/edit_ingredient_recette]
+in APPPATH\Controllers\AjaxController.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->editIngredientRecette()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-28 09:48:45 --> TypeError: App\Controllers\AjaxController::editIngredientRecette(): Return value must be of type App\Controllers\Response, CodeIgniter\HTTP\Response returned
+[Method: POST, Route: recettes/edit_ingredient_recette]
+in APPPATH\Controllers\AjaxController.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->editIngredientRecette()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-28 10:01:21 --> TypeError: App\Controllers\AjaxController::addIngredientRecette(): Return value must be of type string, CodeIgniter\HTTP\Response returned
+[Method: POST, Route: recettes/add_ingredient_recette]
+in APPPATH\Controllers\AjaxController.php on line 130.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->addIngredientRecette()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

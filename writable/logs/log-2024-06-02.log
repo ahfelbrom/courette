@@ -1,0 +1,95 @@
+CRITICAL - 2024-06-02 12:37:09 --> ErrorException: Type of App\Models\RecetteModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH\Models\RecetteModel.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-06-02 12:37:37 --> ErrorException: Type of App\Models\RecetteModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH\Models\RecetteModel.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-06-02 12:37:38 --> ErrorException: Type of App\Models\RecetteModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH\Models\RecetteModel.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-06-02 12:38:13 --> ErrorException: Type of App\Models\RecetteModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH\Models\RecetteModel.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-06-02 12:39:54 --> ErrorException: Type of App\Models\RecetteModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: /]
+in APPPATH\Models\RecetteModel.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-06-02 12:40:17 --> InvalidArgumentException: No such handler for "REC_NOM". Invalid type: string
+[Method: GET, Route: /]
+in SYSTEMPATH\DataCaster\DataCaster.php on line 171.
+ 1 SYSTEMPATH\DataConverter\DataConverter.php(80): CodeIgniter\DataCaster\DataCaster->castAs('test', 'REC_NOM', 'get')
+ 2 SYSTEMPATH\BaseModel.php(1944): CodeIgniter\DataConverter\DataConverter->fromDataSource([...])
+ 3 SYSTEMPATH\Model.php(280): CodeIgniter\BaseModel->convertToReturnType([...], 'array')
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\RecetteModel.php(35): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\RecetteController.php(18): App\Models\RecetteModel->findAllActive()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-02 12:40:35 --> ErrorException: Type of App\Models\RecetteModel::$table must not be defined (as in class CodeIgniter\Model)
+[Method: GET, Route: /]
+in APPPATH\Models\RecetteModel.php on line 6.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-06-02 12:40:44 --> CodeIgniter\DataCaster\Exceptions\CastException: Syntax error, malformed JSON.
+[Method: GET, Route: /]
+in SYSTEMPATH\Entity\Exceptions\CastException.php on line 50.
+ 1 SYSTEMPATH\DataCaster\Cast\JsonCast.php(44): CodeIgniter\Entity\Exceptions\CastException::forInvalidJsonFormat(4)
+ 2 SYSTEMPATH\DataCaster\DataCaster.php(186): CodeIgniter\DataCaster\Cast\JsonCast::get('Je suis la liste des ustensile', [...], Object(CodeIgniter\Database\MySQLi\Connection))
+ 3 SYSTEMPATH\DataConverter\DataConverter.php(80): CodeIgniter\DataCaster\DataCaster->castAs('Je suis la liste des ustensile', 'REC_LISTE_USTENSILE', 'get')
+ 4 SYSTEMPATH\BaseModel.php(1944): CodeIgniter\DataConverter\DataConverter->fromDataSource([...])
+ 5 SYSTEMPATH\Model.php(280): CodeIgniter\BaseModel->convertToReturnType([...], 'array')
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RecetteModel.php(33): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RecetteController.php(18): App\Models\RecetteModel->findAllActive()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->index()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-02 12:42:19 --> ErrorException: Undefined variable $newInsertedId
+[Method: GET, Route: /]
+in APPPATH\Views\recette\index.php on line 3.
+ 1 APPPATH\Views\recette\index.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $newInsertedId', 'D:\\laragon\\www\\ci4-app\\app\\Views\\recette\\index.php', 3)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\ci4-app\\app\\Views\\recette\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('recette/index', [], true)
+ 5 APPPATH\Views\template\layout.php(15): view('recette/index', [...])
+ 6 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\ci4-app\\app\\Views\\template\\layout.php')
+ 7 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template/layout', [], true)
+ 9 APPPATH\Controllers\BaseController.php(67): view('template/layout', [...])
+10 APPPATH\Controllers\RecetteController.php(23): App\Controllers\BaseController->showView('recette/index', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->index()
+12 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+13 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-02 13:36:31 --> ErrorException: Undefined property: App\Controllers\AjaxController::$input
+[Method: POST, Route: recettes/add_recette]
+in APPPATH\Controllers\AjaxController.php on line 9.
+ 1 APPPATH\Controllers\AjaxController.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AjaxController::$input', 'D:\\laragon\\www\\ci4-app\\app\\Controllers\\AjaxController.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->addRecette()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-02 13:38:12 --> ErrorException: Undefined variable $request
+[Method: POST, Route: recettes/add_recette]
+in APPPATH\Controllers\AjaxController.php on line 9.
+ 1 APPPATH\Controllers\AjaxController.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $request', 'D:\\laragon\\www\\ci4-app\\app\\Controllers\\AjaxController.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->addRecette()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,0 +1,50 @@
+CRITICAL - 2024-08-16 15:47:36 --> Error: Call to undefined function App\Controllers\array_group_by_key()
+[Method: POST, Route: semaine/select_recette_semaine]
+in APPPATH\Controllers\AjaxController.php on line 437.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->selectListeRecetteSemaine()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-16 16:11:29 --> TypeError: App\Models\SemaineModel::findThisWeek(): Return value must be of type array, null returned
+[Method: GET, Route: semaine/this_week]
+in APPPATH\Models\SemaineModel.php on line 35.
+ 1 APPPATH\Controllers\SemaineController.php(22): App\Models\SemaineModel->findThisWeek()
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SemaineController->showSemaine()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SemaineController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-16 16:23:01 --> ErrorException: Attempt to read property "SEM_LISTEREPAS" on array
+[Method: GET, Route: semaine/this_week]
+in APPPATH\Controllers\SemaineController.php on line 25.
+ 1 APPPATH\Controllers\SemaineController.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "SEM_LISTEREPAS" on array', 'D:\\laragon\\www\\courette\\app\\Controllers\\SemaineController.php', 25)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SemaineController->showSemaine()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SemaineController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-16 16:28:00 --> BadMethodCallException: Call to undefined method App\Models\RecetteModel::findAllRecetteFromListId
+[Method: GET, Route: semaine/this_week]
+in SYSTEMPATH\Model.php on line 921.
+ 1 APPPATH\Controllers\SemaineController.php(28): CodeIgniter\Model->__call('findAllRecetteFromListId', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SemaineController->showSemaine()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SemaineController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-16 16:28:35 --> BadMethodCallException: Call to undefined method App\Models\RecetteModel::where_in
+[Method: GET, Route: semaine/this_week]
+in SYSTEMPATH\Model.php on line 921.
+ 1 APPPATH\Models\RecetteModel.php(42): CodeIgniter\Model->__call('where_in', [...])
+ 2 APPPATH\Controllers\SemaineController.php(28): App\Models\RecetteModel->findAllRecetteFromListId([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SemaineController->showSemaine()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SemaineController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

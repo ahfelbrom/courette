@@ -1,0 +1,37 @@
+CRITICAL - 2024-06-26 13:28:51 --> Error: Call to a member function findAll() on null
+[Method: GET, Route: recettes/detail/27]
+in APPPATH\Controllers\RecetteController.php on line 33.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->detail('27')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-26 13:46:09 --> Error: Call to a member function findAll() on null
+[Method: GET, Route: recettes/detail/27]
+in APPPATH\Controllers\RecetteController.php on line 22.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->detail('27')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-26 13:58:38 --> ErrorException: Undefined array key "REC_NB_PERSONNES_BASE"
+[Method: GET, Route: recettes/detail/27]
+in APPPATH\Views\recette\detail.php on line 5.
+ 1 APPPATH\Views\recette\detail.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "REC_NB_PERSONNES_BASE"', 'D:\\laragon\\www\\courette\\app\\Views\\recette\\detail.php', 5)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\recette\\detail.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('recette/detail', [], true)
+ 5 APPPATH\Views\template\layout.php(15): view('recette/detail', [...])
+ 6 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\template\\layout.php')
+ 7 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template/layout', [], true)
+ 9 APPPATH\Controllers\BaseController.php(67): view('template/layout', [...])
+10 APPPATH\Controllers\RecetteController.php(26): App\Controllers\BaseController->showView('recette/detail', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->detail('27')
+12 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+13 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

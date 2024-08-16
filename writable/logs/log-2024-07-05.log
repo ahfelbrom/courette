@@ -1,0 +1,31 @@
+CRITICAL - 2024-07-05 13:36:09 --> BadMethodCallException: Call to undefined method App\Models\EtapeModel::findLastEtapeOfRecette
+[Method: POST, Route: recettes/add_etape]
+in SYSTEMPATH\Model.php on line 921.
+ 1 APPPATH\Controllers\AjaxController.php(239): CodeIgniter\Model->__call('findLastEtapeOfRecette', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->addEtape()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-05 13:40:02 --> ErrorException: Undefined array key "ETR_ORDRE"
+[Method: POST, Route: recettes/add_etape]
+in APPPATH\Controllers\AjaxController.php on line 241.
+ 1 APPPATH\Controllers\AjaxController.php(241): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ETR_ORDRE"', 'D:\\laragon\\www\\courette\\app\\Controllers\\AjaxController.php', 241)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->addEtape()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-05 13:48:44 --> BadMethodCallException: Call to undefined method App\Models\EtapeModel::getRowArray
+[Method: POST, Route: recettes/add_etape]
+in SYSTEMPATH\Model.php on line 921.
+ 1 APPPATH\Models\EtapeModel.php(40): CodeIgniter\Model->__call('getRowArray', [])
+ 2 APPPATH\Controllers\AjaxController.php(239): App\Models\EtapeModel->findLastEtapeOfRecette(27)
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AjaxController->addEtape()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AjaxController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

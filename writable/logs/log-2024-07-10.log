@@ -1,0 +1,127 @@
+ERROR - 2024-07-10 13:38:59 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\laragon\www\courette\system\Database\MySQLi\Connection.php:187
+Stack trace:
+#0 D:\laragon\www\courette\system\Database\MySQLi\Connection.php(187): mysqli->real_connect('localhost', 'iusr_recipes', 'iusr_recipes', 'RECIPES', 3306, '', 0)
+#1 D:\laragon\www\courette\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\laragon\www\courette\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\laragon\www\courette\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\laragon\www\courette\system\Model.php(207): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\laragon\www\courette\system\BaseModel.php(610): CodeIgniter\Model->doFind(true, 27)
+#6 D:\laragon\www\courette\app\Controllers\RecetteController.php(27): CodeIgniter\BaseModel->find(27)
+#7 D:\laragon\www\courette\system\CodeIgniter.php(933): App\Controllers\RecetteController->detail(27)
+#8 D:\laragon\www\courette\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+#9 D:\laragon\www\courette\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\laragon\www\courette\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#11 D:\laragon\www\courette\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\laragon\www\courette\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\laragon\www\courette\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\laragon\www\courette\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\laragon\www\courette\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\laragon\www\courette\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\laragon\www\courette\system\Model.php(207): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\laragon\www\courette\system\BaseModel.php(610): CodeIgniter\Model->doFind(true, 27)
+#5 D:\laragon\www\courette\app\Controllers\RecetteController.php(27): CodeIgniter\BaseModel->find(27)
+#6 D:\laragon\www\courette\system\CodeIgniter.php(933): App\Controllers\RecetteController->detail(27)
+#7 D:\laragon\www\courette\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+#8 D:\laragon\www\courette\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\laragon\www\courette\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#10 D:\laragon\www\courette\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\laragon\www\courette\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-07-10 13:38:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: GET, Route: recettes/detail/27]
+in SYSTEMPATH\Database\BaseConnection.php on line 457.
+ 1 SYSTEMPATH\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `T_E_RECETTE_REC`
+WHERE `T_E_RECETTE_REC`.`REC_ID` = :T_E_RECETTE_REC.REC_ID:', [...], false)
+ 3 SYSTEMPATH\Model.php(207): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(true, 27)
+ 5 APPPATH\Controllers\RecetteController.php(27): CodeIgniter\BaseModel->find(27)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\RecetteController->detail(27)
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RecetteController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-10 14:14:04 --> ErrorException: Undefined variable $aAllRecette
+[Method: GET, Route: ingredients/liste]
+in APPPATH\Views\recette\index.php on line 14.
+ 1 APPPATH\Views\recette\index.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $aAllRecette', 'D:\\laragon\\www\\courette\\app\\Views\\recette\\index.php', 14)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\recette\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('recette/index', [], true)
+ 5 APPPATH\Views\template\layout.php(16): view('recette/index', [...])
+ 6 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\template\\layout.php')
+ 7 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template/layout', [], true)
+ 9 APPPATH\Controllers\BaseController.php(67): view('template/layout', [...])
+10 APPPATH\Controllers\IngredientController.php(15): App\Controllers\BaseController->showView('recette/index', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IngredientController->index()
+12 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IngredientController))
+13 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-10 14:24:46 --> ErrorException: Undefined variable $aRecette
+[Method: GET, Route: ingredients/liste]
+in APPPATH\Views\ingredient\index.php on line 17.
+ 1 APPPATH\Views\ingredient\index.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $aRecette', 'D:\\laragon\\www\\courette\\app\\Views\\ingredient\\index.php', 17)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\ingredient\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('ingredient/index', [], true)
+ 5 APPPATH\Views\template\layout.php(16): view('ingredient/index', [...])
+ 6 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\template\\layout.php')
+ 7 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template/layout', [], true)
+ 9 APPPATH\Controllers\BaseController.php(67): view('template/layout', [...])
+10 APPPATH\Controllers\IngredientController.php(15): App\Controllers\BaseController->showView('ingredient/index', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IngredientController->index()
+12 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IngredientController))
+13 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-10 14:25:03 --> ErrorException: Array to string conversion
+[Method: GET, Route: ingredients/liste]
+in APPPATH\Views\ingredient\index.php on line 19.
+ 1 APPPATH\Views\ingredient\index.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'D:\\laragon\\www\\courette\\app\\Views\\ingredient\\index.php', 19)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\ingredient\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('ingredient/index', [], true)
+ 5 APPPATH\Views\template\layout.php(16): view('ingredient/index', [...])
+ 6 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\template\\layout.php')
+ 7 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template/layout', [], true)
+ 9 APPPATH\Controllers\BaseController.php(67): view('template/layout', [...])
+10 APPPATH\Controllers\IngredientController.php(15): App\Controllers\BaseController->showView('ingredient/index', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IngredientController->index()
+12 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IngredientController))
+13 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-10 14:25:55 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "modals/modal-add-update-ingredient.php"
+[Method: GET, Route: ingredients/liste]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('modals/modal-add-update-ingredient.php')
+ 2 SYSTEMPATH\View\View.php(484): CodeIgniter\View\View->render('modals/modal-add-update-ingredient', null, true)
+ 3 APPPATH\Views\ingredient\index.php(36): CodeIgniter\View\View->include('modals/modal-add-update-ingredient')
+ 4 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\ingredient\\index.php')
+ 5 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('ingredient/index', [], true)
+ 7 APPPATH\Views\template\layout.php(16): view('ingredient/index', [...])
+ 8 SYSTEMPATH\View\View.php(234): include('D:\\laragon\\www\\courette\\app\\Views\\template\\layout.php')
+ 9 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+10 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template/layout', [], true)
+11 APPPATH\Controllers\BaseController.php(67): view('template/layout', [...])
+12 APPPATH\Controllers\IngredientController.php(15): App\Controllers\BaseController->showView('ingredient/index', [...])
+13 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IngredientController->index()
+14 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IngredientController))
+15 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+16 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+18 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
