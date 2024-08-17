@@ -441,8 +441,9 @@ class AjaxController extends BaseController
 
             if ($this->__checkAllIdRecette($aAllRecetteSelected, $aAllIdRecette)) {
                 $semaineModel = model("SemaineModel");
+                // TODO : voir pour laisser la possibilité de choisir la semaine qu'on prépare
                 $intNewSemaineId = $semaineModel->insert(array(
-                    "SEM_NUMERO"     => date('W'),
+                    "SEM_NUMERO"     => date('W')+1,
                     "SEM_YEAR"       => date('Y'),
                     "SEM_LISTEREPAS" => $aAllRecetteSelected,
                 ));

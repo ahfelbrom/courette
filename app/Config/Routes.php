@@ -22,7 +22,8 @@ $routes->post('ingredients/add_ingredient', 'AjaxController::addIngredient');
 $routes->post('ingredients/edit_ingredient', 'AjaxController::editIngredient');
 $routes->post('ingredients/desactivate_ingredient', 'AjaxController::desactivateIngredient');
 
-// semainePreparation
+// semaine
 $routes->get('semaine/preparation_repas', 'SemaineController::index');
 $routes->get('semaine/this_week', 'SemaineController::showSemaine'); // TODO : peut-être l'accueil plus tard
+$routes->get('semaine/liste', 'SemaineController::listAllSemaine');
 $routes->post('semaine/select_recette_semaine', 'AjaxController::selectListeRecetteSemaine');

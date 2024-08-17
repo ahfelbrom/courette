@@ -25,15 +25,38 @@ class SemaineController extends BaseController
         if (isset($thisSemaine) && !empty($thisSemaine)) {
             $aAllIdRecetteSelected = json_decode($thisSemaine['SEM_LISTEREPAS']);
             $recetteModel = model("RecetteModel");
+            $ingredientRecetteModel = model("IngredientRecetteModel");
             $aAllInfosRecetteOfSemaine = $recetteModel->findAllRecetteFromListId($aAllIdRecetteSelected);
+
+            $aAllIngredientNeededForSemaine = array();
+            foreach ($aAllInfosRecetteOfSemaine as $aRecette) {
+                $aAllIngredientOfRecette = $ingredientRecetteModel->findAllIngredientByRecette($aRecette['REC_ID']);
+                foreach($aAllIngredientOfRecette as $aIngredient) {
+                    if (!isset($aAllIngredientNeededForSemaine[$aIngredient['ING_ID']])) {
+                        $aAllIngredientNeededForSemaine[$aIngredient['ING_ID']] = array(
+                            "NOMBRE" => $aIngredient['IGE_NOMBRE'],
+                            "UNITE" => $aIngredient['ING_UNITE'],
+                            "NOM" => $aIngredient['ING_NOM']
+                        );
+                    } else {
+                        $aAllIngredientNeededForSemaine[$aIngredient['ING_ID']]['NOMBRE'] += $aIngredient['IGE_NOMBRE'];
+                    }
+                }
+            }
         }
 
         parent::setJsFiles(array(
             //base_url("js/semaine/preparation.js")
         ));
         return parent::showView('semaine/this_week', array(
-            "thisSemaine"               => $thisSemaine,
-            "aAllInfosRecetteOfSemaine" => $aAllInfosRecetteOfSemaine
+            "thisSemaine"                    => $thisSemaine,
+            "aAllInfosRecetteOfSemaine"      => $aAllInfosRecetteOfSemaine,
+            "aAllIngredientNeededForSemaine" => $aAllIngredientNeededForSemaine
         ));
+    }
+
+    public function listAllSemaine():string
+    {
+        echo "JE SUIS LE PROCHAIN SUR LA LISTE DES TODO";
     }
 }
