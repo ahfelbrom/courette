@@ -33,7 +33,7 @@ class EtapeModel extends Model
         return $this->where("REC_ID", $idRecette)->findAll();
     }
 
-    public function findLastEtapeOfRecette(int $idRecette): array
+    public function findLastEtapeOfRecette(int $idRecette): ?array
     {
         return $this->where("REC_ID", $idRecette)
                 ->orderBy("ETR_ORDRE", "DESC")

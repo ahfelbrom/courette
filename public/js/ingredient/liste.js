@@ -3,7 +3,7 @@ $(function(){
         $('#input-ingredient-nom').val("");
         $('#input-ingredient-unite').val("");
         $('#select-ingredient-mois-saison').val("");
-        $('#select-ingredient-mois-saison option').removeAttr("selected");
+        $('#select-ingredient-mois-saison option').attr("selected", true);
         $('#hidden-ingredient-id').val("");
         $('#action').val('add');
 

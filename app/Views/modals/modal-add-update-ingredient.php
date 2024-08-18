@@ -14,6 +14,7 @@
                             <input class="form-control" id="input-ingredient-nom" name="ING_NOM"/>
                         </div>
                         <div class="mb-3">
+                            <!-- TODO : transformer ce champ en select -->
                             <label for="input-ingredient-unite" class="form-label">Unité</label>
                             <input class="form-control" id="input-ingredient-unite" name="ING_UNITE"/>
                         </div>
