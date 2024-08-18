@@ -5,8 +5,11 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+// accueil
+$routes->get('/', 'SemaineController::showSemaine'); // TODO : peut-être l'accueil plus tard
+
 // recettes
-$routes->get('/', 'RecetteController::index');
+$routes->get('/recette/liste', 'RecetteController::index');
 $routes->get('recettes/detail/(:num)', 'RecetteController::detail/$1');
 $routes->post('recettes/add_recette', 'AjaxController::addRecette');
 $routes->post('recettes/add_ingredient_recette', 'AjaxController::addIngredientRecette');
@@ -24,6 +27,5 @@ $routes->post('ingredients/desactivate_ingredient', 'AjaxController::desactivate
 
 // semaine
 $routes->get('semaine/preparation_repas', 'SemaineController::index');
-$routes->get('semaine/this_week', 'SemaineController::showSemaine'); // TODO : peut-être l'accueil plus tard
 $routes->get('semaine/liste', 'SemaineController::listAllSemaine');
 $routes->post('semaine/select_recette_semaine', 'AjaxController::selectListeRecetteSemaine');

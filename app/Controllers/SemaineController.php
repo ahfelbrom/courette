@@ -57,6 +57,10 @@ class SemaineController extends BaseController
 
     public function listAllSemaine():string
     {
-        echo "JE SUIS LE PROCHAIN SUR LA LISTE DES TODO";
+        parent::setJsFiles(array(
+            //base_url("js/semaine/preparation.js")
+        ));
+        return parent::showView('semaine/list_week', array(
+        ));
     }
 }
