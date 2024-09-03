@@ -239,10 +239,12 @@ class AjaxController extends BaseController
                 $etapeModel = model('EtapeModel');
                 $aLastEtapeOfRecette = $etapeModel->findLastEtapeOfRecette((int)$this->request->getPost("REC_ID"));
 
+                $aExplodedDuree = explode(":", $this->request->getPost("ETR_DUREE"));
+                $intNbSecondFromDuree = ($aExplodedDuree[0] * 60) + $aExplodedDuree[1];
                 $intOrdreEtape = (!empty($aLastEtapeOfRecette)?$aLastEtapeOfRecette['ETR_ORDRE']+1:1);
                 $idEtapeInserted = $etapeModel->insert(array(
                     "ETR_ORDRE"       => $intOrdreEtape,
-                    "ETR_DUREE"       => $this->request->getPost("ETR_DUREE"),
+                    "ETR_DUREE"       => $intNbSecondFromDuree,
                     "ETR_DESCRIPTION" => $this->request->getPost("ETR_DESCRIPTION"),
                     "REC_ID"          => $this->request->getPost("REC_ID"),
                 ));

@@ -29,7 +29,8 @@ class IngredientModel extends Model
     }
 
     public function findAllActive(int $bActive=1){
-        return $this->where('ING_ACTIVE', $bActive)->findAll();
+        return $this->where('ING_ACTIVE', $bActive)
+            ->orderBy("ING_NOM")->findAll();
     }
 
     public function findAllIdActive(int $bActive=1){

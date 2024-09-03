@@ -22,13 +22,13 @@ class SemaineController extends BaseController
         $thisSemaine = $semaineModel->findThisWeek();
 
         $aAllInfosRecetteOfSemaine = array();
+        $aAllIngredientNeededForSemaine = array();
         if (isset($thisSemaine) && !empty($thisSemaine)) {
             $aAllIdRecetteSelected = json_decode($thisSemaine['SEM_LISTEREPAS']);
             $recetteModel = model("RecetteModel");
             $ingredientRecetteModel = model("IngredientRecetteModel");
             $aAllInfosRecetteOfSemaine = $recetteModel->findAllRecetteFromListId($aAllIdRecetteSelected);
 
-            $aAllIngredientNeededForSemaine = array();
             foreach ($aAllInfosRecetteOfSemaine as $aRecette) {
                 $aAllIngredientOfRecette = $ingredientRecetteModel->findAllIngredientByRecette($aRecette['REC_ID']);
                 foreach($aAllIngredientOfRecette as $aIngredient) {

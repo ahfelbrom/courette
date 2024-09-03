@@ -11,7 +11,7 @@
                     <div class="container-fluid">
                         <div class="mb-3">
                             <label for="input-etape-duree" class="form-label">Durée</label>
-                            <input class="form-control" id="input-etape-duree" name="ETR_DUREE"/>
+                            <input type="time" class="form-control" id="input-etape-duree" name="ETR_DUREE"/>
                         </div>
                         <div class="mb-3">
                             <label for="text-etape-description" class="form-label">Description</label>
