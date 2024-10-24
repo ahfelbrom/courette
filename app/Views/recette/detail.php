@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-6 shadow">
+        <div class="col-5 shadow bg-light">
             <p>Durée (en minutes) : <?= $aInfosRecette['REC_DUREE'] ?></p>
             <p>nombre de personne de base : <?= $aInfosRecette['REC_NB_PERSONNE_BASE'] ?></p>
             <p>Liste d'ustensile</p>
@@ -10,7 +10,7 @@
                 <?php endforeach; ?>
             </ul>
         </div>
-        <div class="col-6 shadow">
+        <div class="col-6 offset-1 shadow bg-light">
             LA LISTE DES INGREDIENTS
             <a href="#" class="btn btn-sm btn-success" id="launch-add-ingredient">Ajouter un ingrédient</a>
             <table class="table table-bordered table-striped">

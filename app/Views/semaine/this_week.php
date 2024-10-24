@@ -14,6 +14,9 @@
                             <h5 class="card-header bg-secondary"><?= $aRecette['REC_NOM'] ?></h5>
                             <div class="card-body">
                                 <h5 class="card-title"><?= $aRecette['REC_DUREE'] ?> minutes</h5>
+                                <div class="float-end">
+                                    <a href="<?= base_url("recettes/detail/" . $aRecette['REC_ID']) ?>" class="btn btn-primary btn-sm">Détails</a>
+                                </div>
                             </div>
                         </div>
                     </div>

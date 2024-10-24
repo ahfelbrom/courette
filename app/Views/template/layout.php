@@ -11,7 +11,7 @@
             <link href="<?= $strCssFile ?>" rel="stylesheet"/>
         <?php endforeach; ?>
     </head>
-    <body>
+    <body style="background-color: #FFF8E1 !important;">
         <?= view("template/header") ?>
         <?= view($viewToLoad, $aData) ?>
         <?= view("template/footer") ?>
