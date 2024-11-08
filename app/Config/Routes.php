@@ -27,5 +27,4 @@ $routes->post('ingredients/desactivate_ingredient', 'AjaxController::desactivate
 
 // semaine
 $routes->get('semaine/preparation_repas', 'SemaineController::index');
-$routes->get('semaine/liste', 'SemaineController::listAllSemaine');
 $routes->post('semaine/select_recette_semaine', 'AjaxController::selectListeRecetteSemaine');

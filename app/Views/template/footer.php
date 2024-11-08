@@ -1,1 +1,1 @@
-<h1>Je suis le footer</h1>
+<p>&copy; <?= date('Y') ?> Courette. Tous droits réservés.</p>

@@ -46,21 +46,12 @@ class SemaineController extends BaseController
         }
 
         parent::setJsFiles(array(
-            //base_url("js/semaine/preparation.js")
+            base_url("js/semaine/this_week.js")
         ));
         return parent::showView('semaine/this_week', array(
             "thisSemaine"                    => $thisSemaine,
             "aAllInfosRecetteOfSemaine"      => $aAllInfosRecetteOfSemaine,
             "aAllIngredientNeededForSemaine" => $aAllIngredientNeededForSemaine
-        ));
-    }
-
-    public function listAllSemaine():string
-    {
-        parent::setJsFiles(array(
-            //base_url("js/semaine/preparation.js")
-        ));
-        return parent::showView('semaine/list_week', array(
         ));
     }
 }
