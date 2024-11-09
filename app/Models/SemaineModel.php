@@ -27,10 +27,15 @@ class SemaineModel extends Model
         );
     }
 
-    public function findThisWeek(): ?array
+    public function findThisWeek($strNumWeek=null): ?array
     {
-        return $this->where("SEM_NUMERO", date('W')+1)
-            ->where("SEM_YEAR", date('Y'))
-            ->get()->getRowArray();
+        $this->where("SEM_YEAR", date('Y'));
+        if ($strNumWeek !== null) {
+            $this->where("SEM_NUMERO", $strNumWeek);
+        } else {
+            $this->where("SEM_NUMERO", date('W'));
+        }
+
+        return $this->get()->getRowArray();
     }
 }

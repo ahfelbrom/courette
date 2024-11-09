@@ -50,3 +50,8 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #FFE70A !important;
     border-color: #FFE70A !important;
 }
+
+/* Style pour surligner la semaine survolée */
+.highlight-week a{
+    background-color: #6F8292 !important;
+}

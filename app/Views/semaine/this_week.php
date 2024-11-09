@@ -5,9 +5,10 @@
         <?php else: ?>
             <h1>Pas de choix effectué pour cette semaine</h1>
         <?php endif; ?>
-            <button class="btn btn-sm btn-primary m-1" id="past-week"><i class="fa fa-less-than"></i></button>
+            <a href="?num_week=<?= $strNumWeek-1 ?>" class="btn btn-sm btn-primary m-1 py-3"><i class="fa fa-less-than"></i></a>
             <button class="btn btn-sm btn-primary m-1" id="all-week"><i class="fa fa-calendar-days"></i></button>
-            <button class="btn btn-sm btn-primary m-1" id="next-week"><i class="fa fa-greater-than"></i></button>
+            <input type="text" class="d-none" id="datepicker">
+            <a href="?num_week=<?= $strNumWeek+1 ?>" class="btn btn-sm btn-primary m-1 py-3"><i class="fa fa-greater-than"></i></a>
     </div>
     <div class="row mx-4">
         <div class="col-10">

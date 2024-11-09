@@ -19,7 +19,8 @@ class SemaineController extends BaseController
     public function showSemaine(): string
     {
         $semaineModel = model("SemaineModel");
-        $thisSemaine = $semaineModel->findThisWeek();
+        $strNumWeek = ($this->request->getGet("num_week") !==null?$this->request->getGet("num_week"):date('W'));
+        $thisSemaine = $semaineModel->findThisWeek($strNumWeek);
 
         $aAllInfosRecetteOfSemaine = array();
         $aAllIngredientNeededForSemaine = array();
@@ -49,6 +50,7 @@ class SemaineController extends BaseController
             base_url("js/semaine/this_week.js")
         ));
         return parent::showView('semaine/this_week', array(
+            "strNumWeek"                     => $strNumWeek,
             "thisSemaine"                    => $thisSemaine,
             "aAllInfosRecetteOfSemaine"      => $aAllInfosRecetteOfSemaine,
             "aAllIngredientNeededForSemaine" => $aAllIngredientNeededForSemaine
