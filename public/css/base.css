@@ -14,8 +14,18 @@ body {
     flex-direction: column;
 }
 
+.bg-neutral {
+    background-color: #FAF3E0
+}
+
 .content {
   flex: 1; /* Permet au contenu de prendre tout l'espace disponible */
+}
+
+.custom-btn-carousel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 footer {
@@ -30,7 +40,7 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #4CAF50 !important;
     border-color: #4CAF50 !important;
 }
-.btn-primary:hover,.bg-primary:hover {
+.btn-primary:hover {
     background-color: #449C47 !important;
     border-color: #449C47 !important;
 }
@@ -38,15 +48,15 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #FF5722 !important;
     border-color: #FF5722 !important;
 }
-.btn-secondary:hover,.bg-secondary:hover {
+.btn-secondary:hover {
     background-color: #F53900 !important;
     border-color: #F53900 !important;
 }
-.btn-info,bg-info {
+.btn-info,.bg-info {
     background-color: #FFEB3B !important;
     border-color: #FFEB3B !important;
 }
-.btn-info:hover,bg-info:hover {
+.btn-info:hover {
     background-color: #FFE70A !important;
     border-color: #FFE70A !important;
 }

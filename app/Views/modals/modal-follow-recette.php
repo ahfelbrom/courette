@@ -6,8 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="alert alert-success" style="display: none;" id="alert-stop-countdown" role="alert">
-                </div>
+                <div class="alert alert-success" style="display: none;" id="alert-stop-countdown" role="alert"></div>
                 <div id="carousel-follow-recette" class="carousel slide">
                     <div class="carousel-inner">
                         <?php foreach(array_chunk($aAllEtapeOfRecette, 3) as $key => $aThreeStep): ?>

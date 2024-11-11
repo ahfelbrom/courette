@@ -11,6 +11,7 @@
             <a href="?num_week=<?= $strNumWeek+1 ?>" class="btn btn-sm btn-primary m-1 py-3"><i class="fa fa-greater-than"></i></a>
     </div>
     <div class="row mx-4">
+        <div class="alert alert-success" style="display: none;" id="alert-error-general" role="alert"></div>
         <div class="col-10">
             <div class="row">
                 <?php foreach($aAllInfosRecetteOfSemaine as $aRecette): ?>
@@ -23,7 +24,7 @@
                             <div class="card-footer">
                                 <div class="row justify-content-center">
                                     <div class="col-3">
-                                        <button class="btn btn-info"><i class="fa fa-list"></i></button>
+                                        <button class="btn btn-info launch-follow-recette" data-recid="<?= $aRecette['REC_ID'] ?>"><i class="fa fa-list"></i></button>
                                     </div>
                                     <div class="col-3">
                                         <a href="<?= base_url("recettes/detail/" . $aRecette['REC_ID']) ?>"class="btn btn-info"><i class="fa fa-search"></i></a>
@@ -57,3 +58,5 @@
         <button class="btn btn-info">Modifier la liste des repas</button>
     </div>
 </div>
+
+<?= $this->include('modals/modal-follow-any-recette') ?>

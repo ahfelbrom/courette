@@ -30,7 +30,7 @@ class IngredientRecetteModel extends Model
 
     public function findAllByRecette(int $idRecette): array
     {
-        return $this->where('REC_ID', $idRecette)->findAll();
+        return $this->where('REC_ID', $idRecette)->get()->getResultArray();
     }
 
     public function findAllIngredientByRecette(int $idRecette): array

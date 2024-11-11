@@ -429,7 +429,7 @@ class AjaxController extends BaseController
     public function selectListeRecetteSemaine():Response
     {
         $aReturn = array(
-            "success" => false,
+            "success"       => false,
             "error_message" => "Merci de sélectionner au moins 1 recette"
         );
 
@@ -473,5 +473,41 @@ class AjaxController extends BaseController
         }
 
         return $bAllIsOk;
+    }
+
+    public function getInfoRecette():Response
+    {
+        $aReturn = array(
+            "success" => false,
+            "error_message" => "Not implemented yet"
+        );
+
+        if ($this->request->getGet("recid") !== null && (int)$this->request->getGet("recid") > 0) {
+            $recetteModel = model("RecetteModel");
+            $aRecette = $recetteModel->find($this->request->getGet("recid"));
+
+            if (!empty($aRecette)) {
+                $igeModel = model("IngredientRecetteModel");
+                $etapeModel = model("EtapeModel");
+
+                $aAllIngredientOfRecette = $igeModel->findAllIngredientByRecette($aRecette['REC_ID']);
+                $aAllEtapeOfRecette = $etapeModel->findAllByRecette($aRecette['REC_ID']);
+
+                $strViewEtape = view('recette/content-follow-recette', [
+                    "aAllEtapeOfRecette"      => $aAllEtapeOfRecette,
+                    "aAllIngredientOfRecette" => $aAllIngredientOfRecette
+                ]);
+
+                $aReturn['success'] = true;
+                $aReturn['error_message'] = "";
+                $aReturn['data'] = array(
+                    "nbSteps" => count($aAllEtapeOfRecette),
+                    "content" => $strViewEtape,
+                    "recette" => $aRecette
+                );
+            }
+        }
+
+        return $this->response->setJSON($aReturn);
     }
 }
