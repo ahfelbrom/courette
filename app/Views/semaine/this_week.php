@@ -30,7 +30,7 @@
                                         <a href="<?= base_url("recettes/detail/" . $aRecette['REC_ID']) ?>"class="btn btn-info"><i class="fa fa-search"></i></a>
                                     </div>
                                     <div class="col-3">
-                                        <button class="btn btn-info"><i class="fa fa-carrot"></i></button>
+                                        <button class="btn btn-info show-liste-ingredient" data-recid="<?= $aRecette['REC_ID'] ?>"><i class="fa fa-carrot"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -60,3 +60,4 @@
 </div>
 
 <?= $this->include('modals/modal-follow-any-recette') ?>
+<?= $this->include('modals/modal-liste-ingredient-recette') ?>

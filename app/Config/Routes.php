@@ -12,6 +12,7 @@ $routes->get('/', 'SemaineController::showSemaine'); // TODO : peut-être l'accu
 $routes->get('/recette/liste', 'RecetteController::index');
 $routes->get('recettes/detail/(:num)', 'RecetteController::detail/$1');
 $routes->get('recette/get_all_info_recette', 'AjaxController::getInfoRecette');
+$routes->get('recette/get_all_ingredient_recette', 'AjaxController::getAllIngredientRecette');
 $routes->post('recettes/add_recette', 'AjaxController::addRecette');
 $routes->post('recettes/add_ingredient_recette', 'AjaxController::addIngredientRecette');
 $routes->post('recettes/edit_recette', 'AjaxController::editRecette');

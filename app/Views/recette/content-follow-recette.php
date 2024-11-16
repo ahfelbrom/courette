@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-3 border-dark border-end bg-neutral">
         <h5 class="pt-4">Liste des ingrédients</h5>
-            <?php foreach($aAllIngredientOfRecette as $aIngredient): ?>
-                <?= $aIngredient['ING_NOM'] ?> : <?= $aIngredient['IGE_NOMBRE'] . " " . ($aIngredient['ING_UNITE'] !== "Pièce"?$aIngredient['ING_UNITE']:"") ?>
-                <hr style="margin: 0;">
-            <?php endforeach; ?>
+        <?php foreach($aAllIngredientOfRecette as $aIngredient): ?>
+            <?= $aIngredient['ING_NOM'] ?> : <?= $aIngredient['IGE_NOMBRE'] . " " . ($aIngredient['ING_UNITE'] !== "Pièce"?$aIngredient['ING_UNITE']:"") ?>
+            <hr style="margin: 0;">
+        <?php endforeach; ?>
     </div>
     <div class="col-9 d-flex flex-column">
         <div class="alert alert-success" style="display: none;" id="alert-stop-countdown" role="alert"></div>

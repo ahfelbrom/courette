@@ -62,6 +62,35 @@ $(function(){
         });
     });
 
+    $('.show-liste-ingredient').click(function(){
+        let that = $(this);
+        $.ajax({
+            url: COMMON_BASE_URL + "recette/get_all_ingredient_recette?recid=" + that.data('recid'),
+            type: "GET",
+            beforeSend: function (xhr) {
+                $('#modal-liste-ingredient-recette').find(".modal-body").empty();
+            },
+            success: function(returnCall){
+                if (returnCall.success){
+                    let bodyModal = $('#modal-liste-ingredient-recette').find(".modal-body");
+                    $.each(returnCall.data, function(key,ingredientInfo) {
+                        let strInfoIngredient = ingredientInfo.ING_NOM + " : " + ingredientInfo.IGE_NOMBRE + " " + (ingredientInfo.ING_UNITE !== "Pièce"?ingredientInfo.ING_UNITE:"");
+                        bodyModal.append(strInfoIngredient + '<hr style="margin: 0;">');
+                    });
+
+                    $('#modal-liste-ingredient-recette').modal('show');
+                }else{
+                    add_alert_message('#alert-error-general', "failure", returnCall.error_message);
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+            }
+        });
+    });
+
     $(document).on('click', '.update-step-number', function(){
         // on met un timeout histoire de laisser le temps aux classes de se modifier
         // si j'avais des promise pour 

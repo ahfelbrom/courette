@@ -479,7 +479,7 @@ class AjaxController extends BaseController
     {
         $aReturn = array(
             "success" => false,
-            "error_message" => "Not implemented yet"
+            "error_message" => "Donne moi un id de recette correct"
         );
 
         if ($this->request->getGet("recid") !== null && (int)$this->request->getGet("recid") > 0) {
@@ -505,6 +505,31 @@ class AjaxController extends BaseController
                     "content" => $strViewEtape,
                     "recette" => $aRecette
                 );
+            }
+        }
+
+        return $this->response->setJSON($aReturn);
+    }
+
+    public function getAllIngredientRecette():Response
+    {
+        $aReturn = array(
+            "success" => false,
+            "error_message" => "Donnes moi un id de recette correct"
+        );
+
+        if ($this->request->getGet("recid") !== null && (int)$this->request->getGet("recid") > 0) {
+            $recetteModel = model("RecetteModel");
+            $aRecette = $recetteModel->find($this->request->getGet("recid"));
+
+            if (!empty($aRecette)) {
+                $igeModel = model("IngredientRecetteModel");
+
+                $aAllIngredientOfRecette = $igeModel->findAllIngredientByRecette($aRecette['REC_ID']);
+
+                $aReturn['success'] = true;
+                $aReturn['error_message'] = "";
+                $aReturn['data'] = $aAllIngredientOfRecette;
             }
         }
 
