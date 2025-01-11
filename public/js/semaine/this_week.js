@@ -98,7 +98,28 @@ $(function(){
             let numberStep = $('#modal-follow-any-recette').find(".carousel-item.active").data("stepnumber");
             $('#modal-follow-any-recette').find("#number-step").text(numberStep);
         }, 700);
-    })
+    });
+
+    $(document).on("click", '.start-near-clock', function(){
+        let that = $(this);
+        let elmCountdown = that.parent().find('.countdown');
+        let nbSecondsToGo = parseInt(that.data('nbseconds'));
+        let interval = setInterval(function(){
+            nbSecondsToGo -= 1;
+            let textToShow = parseInt(nbSecondsToGo / 60) + ":" + String(nbSecondsToGo % 60).padStart(2, '0');
+            elmCountdown.text(textToShow);
+
+            if (nbSecondsToGo <= 0){
+                clearInterval(interval);
+                $('#alert-stop-countdown').text("Etape " + that.data('ordreetape') + " : Chrono terminé").fadeIn("slow");
+                let audio = new Audio(COMMON_BASE_URL + 'audio/bip.mp3');
+                audio.play();
+                setTimeout(function(){
+                    $('#alert-stop-countdown').fadeOut("slow");
+                }, 2000);
+            }
+        }, 1000);
+    });
 });
 
 // Fonction pour obtenir le numéro de la semaine de l'année

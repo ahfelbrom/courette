@@ -11,6 +11,7 @@
         <link href="<?= base_url("vendor/jquery-ui/jquery-ui.min.css") ?>" rel="stylesheet"/>
         <link href="<?= base_url("vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet"/>
         <link href="<?= base_url("vendor/fontawesome/css/all.min.css") ?>" rel="stylesheet"/>
+        <link href="<?= base_url("vendor/chosen/chosen.min.css") ?>" rel="stylesheet"/>
         <link href="<?= base_url("css/base.css") ?>" rel="stylesheet"/>
         <!-- il faudra ajouter les fichiers CSS que je veux ici -->
         <?php foreach($aAllCssFiles as $strCssFile): ?>
@@ -34,6 +35,7 @@
         <script src="<?= base_url("vendor/jquery.min.js") ?>"></script>
         <script src="<?= base_url("vendor/jquery-ui/jquery-ui.min.js") ?>"></script>
         <script src="<?= base_url("vendor/bootstrap/js/bootstrap.min.js") ?>"></script>
+        <script src="<?= base_url("vendor/chosen/chosen.jquery.min.js") ?>"></script>
         <script src="<?= base_url("js/common.js") ?>"></script>
         <!-- il faudra ajouter les fichiers JS que je veux ici -->
         <?php foreach($aAllJsFiles as $strJsFile): ?>

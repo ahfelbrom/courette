@@ -180,4 +180,9 @@ $(function(){
             }
         }, 1000);
     });
+
+    $('#select-ingredient-recette').chosen({
+        no_results_text: "No match found!", 
+        width: "100%"
+    });
 });

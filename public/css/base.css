@@ -65,3 +65,11 @@ h1,h2,h3,h4,h5,h6 {
 .highlight-week a{
     background-color: #6F8292 !important;
 }
+
+.chosen-container {
+    font-size: 1.3rem !important;
+}
+.chosen-container-single .chosen-single {
+    height: 40px;
+    padding-top: 7px;
+}

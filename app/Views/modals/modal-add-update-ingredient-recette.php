@@ -13,7 +13,7 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="select-ingredient-recette" class="form-label">Ingrédient</label>
-                                    <select class="form-select form-select-lg mb-3" id="select-ingredient-recette" name="ING_ID">
+                                    <select class="form-select form-select-lg mb-3" id="select-ingredient-recette" name="ING_ID" style="font-size: 1.5rem;">
                                         <option value="">---</option>
                                         <?php foreach($aAllIngredient as $aIngredient): ?>
                                             <option data-unite="<?= $aIngredient['ING_UNITE'] ?>" value="<?= $aIngredient['ING_ID'] ?>"><?= $aIngredient['ING_NOM'] ?></option>
