@@ -439,18 +439,27 @@ class AjaxController extends BaseController
 
             $aAllRecette = $recetteModel->findAllActive();
             $aAllIdRecette = array_keys(array_group_by_key($aAllRecette, "REC_ID"));
-            $aAllRecetteSelected = explode(",", $this->request->getPost("all_recette"));
+            $aAllRecetteSelected = $this->request->getPost("all_recette");
+            $aExplodedWeek = explode("/", $this->request->getPost("week_number"));
 
             if ($this->__checkAllIdRecette($aAllRecetteSelected, $aAllIdRecette)) {
                 $semaineModel = model("SemaineModel");
-                // TODO : voir pour laisser la possibilité de choisir la semaine qu'on prépare
-                $intNewSemaineId = $semaineModel->insert(array(
-                    "SEM_NUMERO"     => date('W')+1,
-                    "SEM_YEAR"       => date('Y'),
-                    "SEM_LISTEREPAS" => $aAllRecetteSelected,
-                ));
+                $aInfoChoiceWeek = $semaineModel->findThisWeek($aExplodedWeek);
 
-                if ($intNewSemaineId > 0) {
+                if (isset($aInfoChoiceWeek) && !empty($aInfoChoiceWeek)) {
+                    $bSuccess = $semaineModel->update($aInfoChoiceWeek['SEM_ID'], [
+                        "SEM_LISTEREPAS" => $aAllRecetteSelected
+                    ]);
+                } else {
+                    $intNewSemaineId = $semaineModel->insert(array(
+                        "SEM_NUMERO"     => $aExplodedWeek[0],
+                        "SEM_YEAR"       => $aExplodedWeek[1],
+                        "SEM_LISTEREPAS" => $aAllRecetteSelected,
+                    ));
+                    $bSuccess = $intNewSemaineId > 0;
+                }
+
+                if ($bSuccess) {
                     $aReturn['success'] = true;
                     $aReturn['error_message'] = "";
                 } else {

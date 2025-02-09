@@ -3,7 +3,20 @@
     <div class="row">
         <div class="col-4">
             LES RECETTES QUE J'AI CHOISIS<button class="btn btn-success" id="validate-recette-choisie">Valider les choix</button>
-            <div class="px-5" id="list-recette-choisie"></div>
+            <div class="px-5" id="list-recette-choisie">
+                <?php if (isset($aAllInfosRepas)): ?>
+                    <?php foreach($aAllInfosRepas as $strIdRepas => $aRepas): ?>
+                        <div class="card mb-4 carte-recette">
+                            <h5 class="card-header bg-secondary" id="nom-recette-choisie"><?= $aRepas['REC_NOM'] ?></h5>
+                            <div class="card-body">
+                                <button class="btn btn-danger retirer-recette-semaine" data-recid="<?= $strIdRepas ?>">
+                                    Retirer
+                                </button>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
         </div>
         <div class="col-8">
             LA LISTE DES RECETTES DANS L'APP
@@ -38,3 +51,7 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    let listeIdRecetteChoisie = <?= isset($aAllInfosRepas)?json_encode(array_keys($aAllInfosRepas)):"[]" ?>;
+</script>

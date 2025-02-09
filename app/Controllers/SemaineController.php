@@ -7,12 +7,23 @@ class SemaineController extends BaseController
     public function index(): string
     {
         $recetteModel = model("RecetteModel");
+        $semaineModel = model("SemaineModel");
+        helper("h_utils_helper");
+
+        $strNumWeekAndYear = ($this->request->getGet("num_week") !==null?$this->request->getGet("num_week"):date('W/Y'));
+        $aExplodedWeek = explode("/", $strNumWeekAndYear);
+        $aAllRepasChosenThisWeek = $semaineModel->findThisWeek($aExplodedWeek);
+        $aAllInfosRepas = isset($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])
+            ?array_group_by_key($recetteModel->findAllRecetteFromListId(json_decode($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])), "REC_ID")
+            :null
+        ;
 
         parent::setJsFiles(array(
             base_url("js/semaine/preparation.js")
         ));
         return parent::showView('semaine/preparation', array(
-            "aAllRecette" => $recetteModel->findAllActive()
+            "aAllRecette"    => $recetteModel->findAllActive(),
+            "aAllInfosRepas" => $aAllInfosRepas
         ));
     }
 
@@ -53,7 +64,7 @@ class SemaineController extends BaseController
         ));
         return parent::showView('semaine/this_week', array(
             "aWeeksMove"                     => $aWeeksMove,
-            "strDateDebutSemaine"            => $aWeeksMove['actual'],
+            "strDateDebutSemaine"            => $aWeeksMove['actualWeekDay'],
             "thisSemaine"                    => $thisSemaine,
             "aAllInfosRecetteOfSemaine"      => $aAllInfosRecetteOfSemaine,
             "aAllIngredientNeededForSemaine" => $aAllIngredientNeededForSemaine
@@ -67,7 +78,8 @@ class SemaineController extends BaseController
         // en premier, on crée la datetime correspondant à la semaine
         $dto = new \DateTime();
         $dto->setISODate($aExplodedWeek[1], $aExplodedWeek[0]);
-        $aReturn["actual"] = $dto->format('d/m/Y');
+        $aReturn["actualWeekDay"] = $dto->format('d/m/Y');
+        $aReturn["actual"] = $dto->format('W/Y');
         // ensuite, on enlève une semaine pour générer la date de la semaine d'avant
         $dto->sub(new \DateInterval("P1W"));
         $aReturn["before"] = $dto->format('W/Y');

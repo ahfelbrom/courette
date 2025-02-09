@@ -1,5 +1,5 @@
+let urlParams = new URLSearchParams(window.location.search);
 $(function(){
-    let listeIdRecetteChoisie = [];
     $('.select-recette-semaine').click(function(){
         listeIdRecetteChoisie.push($(this).data('recid'));
         let newRecetteChoisie = $('#prototype-card-recette-choisie').children().clone();
@@ -21,13 +21,16 @@ $(function(){
     $('#validate-recette-choisie').click(function(){
         $.ajax({
             url: COMMON_BASE_URL + "semaine/select_recette_semaine",
-            data: "all_recette="+listeIdRecetteChoisie,
+            data: {
+                "all_recette": listeIdRecetteChoisie,
+                "week_number": urlParams.get("num_week")
+            },
             type: "POST",
             success: function(returnCall){
                 if (returnCall.success){
                     add_alert_message('#alert-select-recette', "success", "L'action a fonctionné");
                     setTimeout(function(){
-                        location.reload();
+                        window.location = COMMON_BASE_URL + "?num_week=" + urlParams.get("num_week");
                     }, 1000);
                 }else{
                     add_alert_message('#alert-select-recette', "failure", returnCall.error_message);

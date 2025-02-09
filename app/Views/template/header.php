@@ -8,9 +8,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url("semaine/preparation_repas") ?>">Préparer la semaine</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url("recette/liste") ?>">Liste des recettes</a>
                 </li>
                 <li class="nav-item">

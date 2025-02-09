@@ -56,7 +56,7 @@
         </div>
     </div>
     <div class="text-center">
-        <button class="btn btn-info">Modifier la liste des repas</button>
+        <a href="<?= base_url("semaine/preparation_repas?num_week=".$aWeeksMove["actual"]) ?>" class="btn btn-info">Modifier la liste des repas</a>
     </div>
 </div>
 
