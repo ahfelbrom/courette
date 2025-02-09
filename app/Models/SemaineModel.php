@@ -27,13 +27,14 @@ class SemaineModel extends Model
         );
     }
 
-    public function findThisWeek($strNumWeek=null): ?array
+    public function findThisWeek(array $aExplodedWeek=null): ?array
     {
-        $this->where("SEM_YEAR", date('Y'));
-        if ($strNumWeek !== null) {
-            $this->where("SEM_NUMERO", $strNumWeek);
+        if ($aExplodedWeek !== null) {
+            $this->where("SEM_YEAR", $aExplodedWeek[1])
+                ->where("SEM_NUMERO", $aExplodedWeek[0]);
         } else {
-            $this->where("SEM_NUMERO", date('W'));
+            $this->where("SEM_NUMERO", date('W'))
+                ->where("SEM_YEAR", date('Y'));
         }
 
         return $this->get()->getRowArray();

@@ -37,6 +37,8 @@ $(function(){
     $('#all-week').click(function(){
         $("#datepicker").focus();
     });
+    // je lance l'évent click une fois pour lancer proprement la datepicker après (bidouille)
+    $('#all-week').click();
 
     $('.launch-follow-recette').click(function(){
         let that = $(this);

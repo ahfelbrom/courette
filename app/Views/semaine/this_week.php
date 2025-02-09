@@ -1,16 +1,17 @@
 <div class="container-fluid">
     <div id="header-view" class="d-flex">
-        <?php if (!empty($thisSemaine)): ?>
-            <h1>La liste des recette de cette semaine :</h1>
-        <?php else: ?>
-            <h1>Pas de choix effectué pour cette semaine</h1>
-        <?php endif; ?>
-            <a href="?num_week=<?= $strNumWeek-1 ?>" class="btn btn-sm btn-primary m-1 py-3"><i class="fa fa-less-than"></i></a>
-            <button class="btn btn-sm btn-primary m-1" id="all-week"><i class="fa fa-calendar-days"></i></button>
-            <input type="text" class="d-none" id="datepicker">
-            <a href="?num_week=<?= $strNumWeek+1 ?>" class="btn btn-sm btn-primary m-1 py-3"><i class="fa fa-greater-than"></i></a>
+        <h1>Repas de la semaine du <?= $strDateDebutSemaine ?></h1>
+        <a href="?num_week=<?= $aWeeksMove["before"] ?>" class="btn btn-sm btn-primary m-1 py-3"><i class="fa fa-less-than"></i></a>
+        <button class="btn btn-sm btn-primary m-1" id="all-week"><i class="fa fa-calendar-days"></i></button>
+        <input type="text" class="d-none" id="datepicker">
+        <a href="?num_week=<?= $aWeeksMove["after"] ?>" class="btn btn-sm btn-primary m-1 py-3"><i class="fa fa-greater-than"></i></a>
     </div>
     <div class="row mx-4">
+        <?php if (!empty($thisSemaine)): ?>
+            <h2>La liste des recette de cette semaine :</h2>
+        <?php else: ?>
+            <h2>Pas de choix effectué pour cette semaine</h2>
+        <?php endif; ?>
         <div class="alert alert-success" style="display: none;" id="alert-error-general" role="alert"></div>
         <div class="col-10">
             <div class="row">

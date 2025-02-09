@@ -19,8 +19,10 @@ class SemaineController extends BaseController
     public function showSemaine(): string
     {
         $semaineModel = model("SemaineModel");
-        $strNumWeek = ($this->request->getGet("num_week") !==null?$this->request->getGet("num_week"):date('W'));
-        $thisSemaine = $semaineModel->findThisWeek($strNumWeek);
+        $strNumWeekAndYear = ($this->request->getGet("num_week") !==null?$this->request->getGet("num_week"):date('W/Y'));
+        $aExplodedWeek = explode("/", $strNumWeekAndYear);
+        $thisSemaine = $semaineModel->findThisWeek($aExplodedWeek);
+        $aWeeksMove = $this->_generateLastAndNextWeek($aExplodedWeek);
 
         $aAllInfosRecetteOfSemaine = array();
         $aAllIngredientNeededForSemaine = array();
@@ -50,10 +52,31 @@ class SemaineController extends BaseController
             base_url("js/semaine/this_week.js")
         ));
         return parent::showView('semaine/this_week', array(
-            "strNumWeek"                     => $strNumWeek,
+            "aWeeksMove"                     => $aWeeksMove,
+            "strDateDebutSemaine"            => $aWeeksMove['actual'],
             "thisSemaine"                    => $thisSemaine,
             "aAllInfosRecetteOfSemaine"      => $aAllInfosRecetteOfSemaine,
             "aAllIngredientNeededForSemaine" => $aAllIngredientNeededForSemaine
         ));
+    }
+
+    private function _generateLastAndNextWeek($aExplodedWeek):array
+    {
+        $aReturn = [];
+
+        // en premier, on crée la datetime correspondant à la semaine
+        $dto = new \DateTime();
+        $dto->setISODate($aExplodedWeek[1], $aExplodedWeek[0]);
+        $aReturn["actual"] = $dto->format('d/m/Y');
+        // ensuite, on enlève une semaine pour générer la date de la semaine d'avant
+        $dto->sub(new \DateInterval("P1W"));
+        $aReturn["before"] = $dto->format('W/Y');
+        // enfin, on rajoute deux semaines pour générer la date de la semaine d'après
+        // on place le curseur à la fin de la semaine pour gérer les semaines entre deux ans
+        $dto->add(new \DateInterval("P2W"));
+        $dto->add(new \DateInterval("P6D"));
+        $aReturn["after"] = $dto->format('W/Y');
+
+        return $aReturn;
     }
 }
