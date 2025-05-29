@@ -442,7 +442,8 @@ class AjaxController extends BaseController
             $aAllRecetteSelected = $this->request->getPost("all_recette");
             $aExplodedWeek = explode("/", $this->request->getPost("week_number"));
 
-            if ($this->__checkAllIdRecette($aAllRecetteSelected, $aAllIdRecette)) {
+            // on vérifie que les id des recettes renvoyées sont bien dans les id de recette connues de l'application
+            if ($this->__checkAllIdRecette($aAllRecetteSelected, array_keys($aAllIdRecette))) {
                 $semaineModel = model("SemaineModel");
                 $aInfoChoiceWeek = $semaineModel->findThisWeek($aExplodedWeek);
 
@@ -465,6 +466,8 @@ class AjaxController extends BaseController
                 } else {
                     $aReturn['error_message'] = "N'ai pas pu valider la semaine.";
                 }
+            } else {
+                $aReturn['error_message'] = "Ne pas tricher avec les recettes merci.";
             }
         }
 
@@ -477,7 +480,7 @@ class AjaxController extends BaseController
 
         foreach($recetteSelected as $sRecetteId){
             if (!in_array((int)$sRecetteId, $allRecette)) {
-                $bAllIsOk = true;
+                $bAllIsOk = false;
             }
         }
 

@@ -27,7 +27,7 @@
                             <h5 class="card-header bg-secondary"><?= $aRecette['REC_NOM'] ?></h5>
                             <div class="card-body">
                                 <h5 class="card-title"><?= $aRecette['REC_DUREE'] ?> minutes</h5>
-                                <button class="btn btn-primary select-recette-semaine" data-recid='<?= $aRecette['REC_ID'] ?>' data-recnom="<?= $aRecette['REC_NOM'] ?>">
+                                <button class="btn btn-primary select-recette-semaine" data-recid='<?= $aRecette['REC_ID'] ?>' data-recnom="<?= $aRecette['REC_NOM'] ?>" data-recnombre="<?= $aRecette['REC_NB_PERSONNE_BASE'] ?>">
                                     Choisir
                                 </button>
                             </div>
@@ -44,6 +44,7 @@
         <div class="card mb-4 carte-recette" style="display: none;">
             <h5 class="card-header bg-secondary" id="nom-recette-choisie"></h5>
             <div class="card-body">
+                <input type="number" id="nombre-personne-recette" class="update-nombre-plat"/>
                 <button class="btn btn-danger retirer-recette-semaine">
                     Retirer
                 </button>
@@ -53,5 +54,5 @@
 </div>
 
 <script type="text/javascript">
-    let listeIdRecetteChoisie = <?= isset($aAllInfosRepas)?json_encode(array_keys($aAllInfosRepas)):"[]" ?>;
+    let listeIdRecetteChoisie = <?= isset($aAllInfosRepas)?json_encode(array_keys($aAllInfosRepas)):"{}" ?>;
 </script>

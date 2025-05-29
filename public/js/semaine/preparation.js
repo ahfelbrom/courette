@@ -1,9 +1,13 @@
 let urlParams = new URLSearchParams(window.location.search);
 $(function(){
     $('.select-recette-semaine').click(function(){
-        listeIdRecetteChoisie.push($(this).data('recid'));
+        listeIdRecetteChoisie[$(this).data('recid')] = {
+            id: $(this).data('recid'),
+            nombre: $(this).data('recnombre')
+        };
         let newRecetteChoisie = $('#prototype-card-recette-choisie').children().clone();
         newRecetteChoisie.find("#nom-recette-choisie").text($(this).data('recnom'));
+        newRecetteChoisie.find("#nombre-personne-recette").val($(this).data('recnombre'));
         newRecetteChoisie.find("button").data("recid", $(this).data('recid'));
 
         $('#list-recette-choisie').append(newRecetteChoisie);
@@ -12,10 +16,15 @@ $(function(){
 
     $('#list-recette-choisie').on("click", '.retirer-recette-semaine', function(){
         let that = $(this);
-        listeIdRecetteChoisie.splice(listeIdRecetteChoisie.indexOf($(this).data('recid')),1);
+        delete listeIdRecetteChoisie[$(this).data('recid')];
         that.closest('.carte-recette').fadeOut("slow", function(){
             that.closest('.carte-recette').remove();
         });
+    });
+    
+    $('#list-recette-choisie').on('change', '.update-nombre-plat', function(){
+        let idRecetteConcerned = $(this).closest('.carte-recette').find('.retirer-recette-semaine').data("recid");
+        listeIdRecetteChoisie[idRecetteConcerned].nombre = $(this).val();
     });
 
     $('#validate-recette-choisie').click(function(){

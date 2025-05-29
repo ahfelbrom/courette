@@ -38,10 +38,10 @@ class SemaineController extends BaseController
         $aAllInfosRecetteOfSemaine = array();
         $aAllIngredientNeededForSemaine = array();
         if (isset($thisSemaine) && !empty($thisSemaine)) {
-            $aAllIdRecetteSelected = json_decode($thisSemaine['SEM_LISTEREPAS']);
+            $aAllIdRecetteSelected = json_decode($thisSemaine['SEM_LISTEREPAS'], true);
             $recetteModel = model("RecetteModel");
             $ingredientRecetteModel = model("IngredientRecetteModel");
-            $aAllInfosRecetteOfSemaine = $recetteModel->findAllRecetteFromListId($aAllIdRecetteSelected);
+            $aAllInfosRecetteOfSemaine = $recetteModel->findAllRecetteFromListId(array_keys($aAllIdRecetteSelected));
 
             foreach ($aAllInfosRecetteOfSemaine as $aRecette) {
                 $aAllIngredientOfRecette = $ingredientRecetteModel->findAllIngredientByRecette($aRecette['REC_ID']);

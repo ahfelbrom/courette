@@ -99,3 +99,14 @@ $aAllUstensile = array(
     "LOU" => "Louche"
 );
 define('ALL_USTENSILE', $aAllUstensile);
+
+$aAllCategorieIngredient = [
+    "LAITA" => "Laitage",
+    "CONDI" => "Condiment",
+    "FECUL" => "Féculent",
+    "FRUIT" => "Fruit",
+    "LEGUM" => "Légume (ineux)",
+    "POISS" => "Poisson",
+    "VIAND" => "Viande"
+];
+define('ALL_CATEGORIE_INGREDIENT', $aAllCategorieIngredient);
