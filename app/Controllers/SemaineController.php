@@ -14,7 +14,7 @@ class SemaineController extends BaseController
         $aExplodedWeek = explode("/", $strNumWeekAndYear);
         $aAllRepasChosenThisWeek = $semaineModel->findThisWeek($aExplodedWeek);
         $aAllInfosRepas = isset($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])
-            ?array_group_by_key($recetteModel->findAllRecetteFromListId(json_decode($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])), "REC_ID")
+            ?array_group_by_key($recetteModel->findAllRecetteFromListId(json_decode($aAllRepasChosenThisWeek['SEM_LISTEREPAS'], true)), "REC_ID")
             :null
         ;
 

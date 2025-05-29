@@ -443,7 +443,7 @@ class AjaxController extends BaseController
             $aExplodedWeek = explode("/", $this->request->getPost("week_number"));
 
             // on vérifie que les id des recettes renvoyées sont bien dans les id de recette connues de l'application
-            if ($this->__checkAllIdRecette($aAllRecetteSelected, array_keys($aAllIdRecette))) {
+            if ($this->__checkAllIdRecette(array_keys($aAllRecetteSelected), $aAllIdRecette)) {
                 $semaineModel = model("SemaineModel");
                 $aInfoChoiceWeek = $semaineModel->findThisWeek($aExplodedWeek);
 
