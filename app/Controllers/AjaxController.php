@@ -79,14 +79,21 @@ class AjaxController extends BaseController
         if (!empty($this->request->getPost())) {
             if ($this->__validateRecetteForm()) {
                 $recetteModel = model("RecetteModel");
-                // TODO : get recette before trying to update it
+                $aRecetteToUpdate = $recetteModel->find($this->request->getPost("REC_ID"));
+                if (empty($aRecetteToUpdate)) {
+                    $aReturn['error_message'] = "Recette non trouvée";
+                    return $this->response->setJSON($aReturn);
+                }
+
                 $aParamsUpdate = array(
                     "REC_NOM"              => $this->request->getPost("REC_NOM"),
                     "REC_DUREE"            => $this->request->getPost("REC_DUREE"),
                     "REC_PHOTO"            => "Not implemented yet",
                     "REC_LISTE_USTENSILE"  => $this->request->getPost("REC_LISTEUSTENSILE"),
                     "REC_NB_PERSONNE_BASE" => $this->request->getPost("REC_NBPERSONNE"),
+                    "REC_TAGLIST"          => $this->request->getPost("REC_TAGLIST")
                 );
+                
                 $bUpdated = $recetteModel->update($this->request->getPost("REC_ID"), $aParamsUpdate);
                 if ($bUpdated) {
                     $aReturn['success'] = true;

@@ -7,8 +7,9 @@
                 <?php if (isset($aAllInfosRepas)): ?>
                     <?php foreach($aAllInfosRepas as $strIdRepas => $aRepas): ?>
                         <div class="card mb-4 carte-recette">
-                            <h5 class="card-header bg-secondary" id="nom-recette-choisie"><?= $aRepas['REC_NOM'] ?></h5>
+                            <h5 class="card-header bg-secondary" id="nom-recette-choisie"><?= $aRepas['RECETTE']['REC_NOM'] ?></h5>
                             <div class="card-body">
+                                <input type="number" id="nombre-personne-recette" class="update-nombre-plat" value="<?= $aRepas['nombre'] ?>"/>
                                 <button class="btn btn-danger retirer-recette-semaine" data-recid="<?= $strIdRepas ?>">
                                     Retirer
                                 </button>

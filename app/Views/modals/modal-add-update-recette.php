@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="select-recette-liste-ustensile" class="form-label">Liste d'ustensile</label>
-                                    <select class="form-select form-select-lg mb-3" id="select-recette-liste-ustensile" name="REC_LISTEUSTENSILE[]" size="3" multiple>
+                                    <select class="form-select form-select-lg mb-3 chosen-select" id="select-recette-liste-ustensile" name="REC_LISTEUSTENSILE[]" size="3" multiple>
                                         <?php foreach(ALL_USTENSILE as $strCodeUstensile => $strUstensile): ?>
                                             <option value="<?= $strCodeUstensile ?>"><?= $strUstensile ?></option>
                                         <?php endforeach; ?>
@@ -32,6 +32,20 @@
                                 <div class="mb-3">
                                     <label for="input-recette-duree" class="form-label">Durée de la recette (en minutes)</label>
                                     <input type="number" class="form-control" name="REC_DUREE" id="input-recette-duree">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="input-recette-tag-list" class="form-label">Badges liés</label>
+                                    <div class="row mb-2">
+                                        <div class="col-10">
+                                            <input type="text" placeholder="Ajouter un tag" class="form-control" id="tag-to-add" />
+                                        </div>
+                                        <button type="button" id="add-tag" class="col-2 btn btn-sm btn-info">Ajouter tag</button>
+                                    </div>
+                                    <select class="form-select form-select-lg mb-3 chosen-select" id="select-recette-liste-tag" name="REC_TAGLIST[]" size="3" multiple>
+                                        <?php foreach($aAllTagForRecettes as $strTag): ?>
+                                            <option value="<?= $strTag ?>"><?= $strTag ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>

@@ -14,17 +14,20 @@ class SemaineController extends BaseController
         $aExplodedWeek = explode("/", $strNumWeekAndYear);
         $aAllRepasChosenThisWeek = $semaineModel->findThisWeek($aExplodedWeek);
         $aAllRecettes = isset($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])?json_decode($aAllRepasChosenThisWeek['SEM_LISTEREPAS'], true):[];
-        $aAllInfosRepas = isset($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])
+        $aAllInfosRepas = !empty(array_keys($aAllRecettes))
             ?array_group_by_key($recetteModel->findAllRecetteFromListId(array_keys($aAllRecettes)), "REC_ID")
             :null
         ;
+        foreach($aAllRecettes as &$aRepas) {
+            $aRepas['RECETTE'] = $aAllInfosRepas[$aRepas['id']];
+        }
 
         parent::setJsFiles(array(
             base_url("js/semaine/preparation.js")
         ));
         return parent::showView('semaine/preparation', array(
             "aAllRecette"    => $recetteModel->findAllActive(),
-            "aAllInfosRepas" => $aAllInfosRepas
+            "aAllInfosRepas" => $aAllRecettes
         ));
     }
 
@@ -42,16 +45,21 @@ class SemaineController extends BaseController
             $aAllIdRecetteSelected = json_decode($thisSemaine['SEM_LISTEREPAS'], true);
             $recetteModel = model("RecetteModel");
             $ingredientRecetteModel = model("IngredientRecetteModel");
-            $aAllInfosRecetteOfSemaine = $recetteModel->findAllRecetteFromListId(array_keys($aAllIdRecetteSelected));
+            $aAllInfosRecetteOfSemaine = !empty(array_keys($aAllIdRecetteSelected))?
+                $recetteModel->findAllRecetteFromListId(array_keys($aAllIdRecetteSelected))
+                : []
+            ;
 
             foreach ($aAllInfosRecetteOfSemaine as $aRecette) {
                 $aAllIngredientOfRecette = $ingredientRecetteModel->findAllIngredientByRecette($aRecette['REC_ID']);
                 $aInfoInstanceRecette = $aAllIdRecetteSelected[$aRecette['REC_ID']];
+                // casté en float pour s'assurer que le résultat prenne bien les décimales, c'est un entier car c'est le nombre de plat (personne)
                 $iNumberRecette = (float)$aInfoInstanceRecette['nombre'];
 
                 foreach($aAllIngredientOfRecette as $aIngredient) {
                     $fCastedNombre = (float) str_replace(",", ".", $aIngredient['IGE_NOMBRE']);
-                    $fNumberForInstance = $fCastedNombre*$iNumberRecette;
+                    // on doit faire en produit en croix pour avoir le résultat final
+                    $fNumberForInstance = ($fCastedNombre*$iNumberRecette)/(float)$aRecette['REC_NB_PERSONNE_BASE'];
                     if (!isset($aAllIngredientNeededForSemaine[$aIngredient['ING_ID']])) {
                         $aAllIngredientNeededForSemaine[$aIngredient['ING_ID']] = array(
                             "NOMBRE" => $fNumberForInstance,

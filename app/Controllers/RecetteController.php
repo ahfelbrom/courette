@@ -7,12 +7,23 @@ class RecetteController extends BaseController
     public function index(): string
     {
         $recetteModel = model("RecetteModel");
+        $aAllRecettes = $recetteModel->findAllActive();
+        $aAllTagForRecettes = [];
+        foreach($aAllRecettes as $aRecette) {
+            $aAllTagThisRecette = $aRecette["REC_TAGLIST"]?:[];
+            foreach($aAllTagThisRecette as $sTag) {
+                if (!isset($aAllTagForRecettes[$sTag])) {
+                    $aAllTagForRecettes[$sTag] = $sTag;
+                }
+            }
+        }
 
         parent::setJsFiles(array(
             base_url("js/recette/liste.js")
         ));
         return parent::showView('recette/index', array(
-            "aAllRecette" => $recetteModel->findAllActive()
+            "aAllRecette"        => $aAllRecettes,
+            "aAllTagForRecettes" => $aAllTagForRecettes
         ));
     }
 

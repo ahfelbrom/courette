@@ -25,3 +25,12 @@ function show_all_errors_in_form(all_errors){
         $("[name='" + elmName + "']").parent().append(invalidElmt);
     });
 }
+
+$(function(){
+    if ($('.chosen-select').length > 0) {
+        $('.chosen-select').chosen({
+            no_results_text: "Aucun résultat", 
+            width: "100%"
+        });
+    }
+});

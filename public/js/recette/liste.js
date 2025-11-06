@@ -56,8 +56,33 @@ $(function(){
         $.each(allInfosRecette.REC_LISTE_USTENSILE, function(key, valueUstensile){
             $('#select-recette-liste-ustensile option[value="' + valueUstensile + '"]').attr("selected", true);
         });
+        $('#select-recette-liste-ustensile').trigger('chosen:updated');
+        $('#select-recette-liste-tag option').removeAttr("selected");
+        $.each(allInfosRecette.REC_TAGLIST, function(key, valueTag){
+            $('#select-recette-liste-tag option[value="' + valueTag + '"]').attr("selected", true);
+        });
+        $('#select-recette-liste-tag').trigger('chosen:updated');
 
         $('#modal-add-update-recette').find('#action').val("edit");
         $('#modal-add-update-recette').modal('show');
+    });
+
+    $('#add-tag').click(function(){
+        const tagToAdd = $("#tag-to-add").val();
+        if ($('#select-recette-liste-tag [value="' + tagToAdd + '"]').length === 0) {
+            // si le tag n'est pas trouvé, on l'ajoute a la liste
+            const elemTag = $('<option/>').val(tagToAdd).text(tagToAdd);
+            $('#select-recette-liste-tag').append(elemTag);
+        }
+        $('#select-recette-liste-tag [value="' + tagToAdd + '"]').attr('selected', true);
+        $('#select-recette-liste-tag').trigger("chosen:updated");
+
+        $("#tag-to-add").val('');
+    });
+
+    $("#tag-to-add").keyup(function(e){
+        if (e.key === " " || e.code === "Space" || e.keyCode === 32) {
+            $('#add-tag').click();
+        }
     });
 });

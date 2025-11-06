@@ -14,6 +14,7 @@ class RecetteModel extends Model
         'REC_CREATEDAT'        => 'datetime',
         'REC_LISTE_USTENSILE'  => 'json-array',
         'REC_NB_PERSONNE_BASE' => 'int',
+        'REC_TAGLIST'          => '?json-array',
     );
 
     /**
@@ -28,14 +29,14 @@ class RecetteModel extends Model
             "REC_PHOTO",
             "REC_LISTE_USTENSILE",
             "REC_NB_PERSONNE_BASE",
+            "REC_TAGLIST",
         );
+        $this->allowEmptyInserts();
     }
 
     public function findAllActive($bActive=1){
         return $this->where('REC_ACTIVE', $bActive)->findAll();
     }
-
-    
 
     public function findAllRecetteFromListId(array $aAllIdRecette): ?array
     {
