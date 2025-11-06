@@ -13,8 +13,9 @@ class SemaineController extends BaseController
         $strNumWeekAndYear = ($this->request->getGet("num_week") !==null?$this->request->getGet("num_week"):date('W/Y'));
         $aExplodedWeek = explode("/", $strNumWeekAndYear);
         $aAllRepasChosenThisWeek = $semaineModel->findThisWeek($aExplodedWeek);
+        $aAllRecettes = isset($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])?json_decode($aAllRepasChosenThisWeek['SEM_LISTEREPAS'], true):[];
         $aAllInfosRepas = isset($aAllRepasChosenThisWeek['SEM_LISTEREPAS'])
-            ?array_group_by_key($recetteModel->findAllRecetteFromListId(json_decode($aAllRepasChosenThisWeek['SEM_LISTEREPAS'], true)), "REC_ID")
+            ?array_group_by_key($recetteModel->findAllRecetteFromListId(array_keys($aAllRecettes)), "REC_ID")
             :null
         ;
 
@@ -45,15 +46,20 @@ class SemaineController extends BaseController
 
             foreach ($aAllInfosRecetteOfSemaine as $aRecette) {
                 $aAllIngredientOfRecette = $ingredientRecetteModel->findAllIngredientByRecette($aRecette['REC_ID']);
+                $aInfoInstanceRecette = $aAllIdRecetteSelected[$aRecette['REC_ID']];
+                $iNumberRecette = (float)$aInfoInstanceRecette['nombre'];
+
                 foreach($aAllIngredientOfRecette as $aIngredient) {
+                    $fCastedNombre = (float) str_replace(",", ".", $aIngredient['IGE_NOMBRE']);
+                    $fNumberForInstance = $fCastedNombre*$iNumberRecette;
                     if (!isset($aAllIngredientNeededForSemaine[$aIngredient['ING_ID']])) {
                         $aAllIngredientNeededForSemaine[$aIngredient['ING_ID']] = array(
-                            "NOMBRE" => $aIngredient['IGE_NOMBRE'],
+                            "NOMBRE" => $fNumberForInstance,
                             "UNITE" => $aIngredient['ING_UNITE'],
                             "NOM" => $aIngredient['ING_NOM']
                         );
                     } else {
-                        $aAllIngredientNeededForSemaine[$aIngredient['ING_ID']]['NOMBRE'] += $aIngredient['IGE_NOMBRE'];
+                        $aAllIngredientNeededForSemaine[$aIngredient['ING_ID']]['NOMBRE'] += $fNumberForInstance;
                     }
                 }
             }

@@ -441,15 +441,22 @@ class AjaxController extends BaseController
             $aAllIdRecette = array_keys(array_group_by_key($aAllRecette, "REC_ID"));
             $aAllRecetteSelected = $this->request->getPost("all_recette");
             $aExplodedWeek = explode("/", $this->request->getPost("week_number"));
-
+            // fix pour gérer temporairement l'envoi des recette car bugué en JS
+            $aAllSendedRecette = [];
+            foreach($aAllRecetteSelected as $aRecette) {
+                if ($aRecette !== "" && isset($aRecette['id'])) {
+                    $aAllSendedRecette[] = $aRecette;
+                }
+            }
+            $aAllSendedRecette = array_group_by_key($aAllSendedRecette, "id");
             // on vérifie que les id des recettes renvoyées sont bien dans les id de recette connues de l'application
-            if ($this->__checkAllIdRecette(array_keys($aAllRecetteSelected), $aAllIdRecette)) {
+            if ($this->__checkAllIdRecette(array_keys($aAllSendedRecette), $aAllIdRecette)) {
                 $semaineModel = model("SemaineModel");
                 $aInfoChoiceWeek = $semaineModel->findThisWeek($aExplodedWeek);
 
                 if (isset($aInfoChoiceWeek) && !empty($aInfoChoiceWeek)) {
                     $bSuccess = $semaineModel->update($aInfoChoiceWeek['SEM_ID'], [
-                        "SEM_LISTEREPAS" => $aAllRecetteSelected
+                        "SEM_LISTEREPAS" => $aAllSendedRecette
                     ]);
                 } else {
                     $intNewSemaineId = $semaineModel->insert(array(
