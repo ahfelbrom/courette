@@ -21,9 +21,28 @@
         </div>
         <div class="col-8">
             LA LISTE DES RECETTES DANS L'APP
+            <div class="card mb-4">
+                <div class="card-header bg-primary">
+                    <h4>Les filtres</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="filter-tag">contient le(s) tag(s)</label>
+                        </div>
+                        <div class="col-6">
+                            <select class="form-select form-select-lg mb-3 chosen-select" id="filter-tag" multiple>
+                                <?php foreach($aAllTags as $strTag): ?>
+                                    <option value="<?= $strTag ?>"><?= $strTag ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <?php foreach($aAllRecette as $aRecette): ?>
-                    <div class="col-4 mb-2">
+                    <div class="col-4 mb-2 card-recette" data-listtag='<?= is_array($aRecette['REC_TAGLIST'])?implode(",",$aRecette['REC_TAGLIST']):"" ?>'>
                         <div class="card">
                             <h5 class="card-header bg-secondary"><?= $aRecette['REC_NOM'] ?></h5>
                             <div class="card-body">
@@ -55,5 +74,5 @@
 </div>
 
 <script type="text/javascript">
-    let listeIdRecetteChoisie = <?= isset($aAllInfosRepas)?json_encode(array_keys($aAllInfosRepas)):"{}" ?>;
+    let listeIdRecetteChoisie = <?= isset($aAllInfosRepas)?json_encode($aAllInfosRepas):"{}" ?>;
 </script>

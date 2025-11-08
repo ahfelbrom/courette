@@ -52,4 +52,21 @@ $(function(){
             }
         });
     });
+
+    $('#filter-tag').change(function(){
+        // d'abord on cherche les éléments qui voudront êtres affichés
+        const aFilters = $(this).val();
+        let allElemFiltered = $('.card-recette');
+        $.each(aFilters, function(iIndex, sFilter){
+            allElemFiltered = allElemFiltered.filter(function(iIndex,oElem) {
+                return $(oElem).data('listtag').indexOf(sFilter) > -1;
+            });
+        });
+
+        // ensuite on cache tout puis on affiche que ceux qu'on veut afficher
+        $('.card-recette').hide();
+        allElemFiltered.each(function(iIndex, oElemFiltered){
+            $(oElemFiltered).show();
+        });
+    });
 });

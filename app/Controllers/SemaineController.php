@@ -21,13 +21,24 @@ class SemaineController extends BaseController
         foreach($aAllRecettes as &$aRepas) {
             $aRepas['RECETTE'] = $aAllInfosRepas[$aRepas['id']];
         }
+        $aAllActiveRecettes = $recetteModel->findAllActive();
+        $aAllTags = [];
+        foreach($aAllActiveRecettes as $aRecette) {
+            $aAllTagThisRecette = $aRecette["REC_TAGLIST"]?:[];
+            foreach($aAllTagThisRecette as $sTag) {
+                if (!isset($aAllTags[$sTag])) {
+                    $aAllTags[$sTag] = $sTag;
+                }
+            }
+        }
 
         parent::setJsFiles(array(
             base_url("js/semaine/preparation.js")
         ));
         return parent::showView('semaine/preparation', array(
-            "aAllRecette"    => $recetteModel->findAllActive(),
-            "aAllInfosRepas" => $aAllRecettes
+            "aAllRecette"    => $aAllActiveRecettes,
+            "aAllInfosRepas" => $aAllRecettes,
+            "aAllTags"       => $aAllTags
         ));
     }
 
