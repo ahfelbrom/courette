@@ -53,17 +53,20 @@ class SemaineController extends BaseController
         $aAllInfosRecetteOfSemaine = array();
         $aAllIngredientNeededForSemaine = array();
         if (isset($thisSemaine) && !empty($thisSemaine)) {
-            $aAllIdRecetteSelected = json_decode($thisSemaine['SEM_LISTEREPAS'], true);
+            $aAllRecetteSelected = json_decode($thisSemaine['SEM_LISTEREPAS'], true);
             $recetteModel = model("RecetteModel");
             $ingredientRecetteModel = model("IngredientRecetteModel");
-            $aAllInfosRecetteOfSemaine = !empty(array_keys($aAllIdRecetteSelected))?
-                $recetteModel->findAllRecetteFromListId(array_keys($aAllIdRecetteSelected))
+            $aAllInfosRecetteOfSemaine = !empty(array_keys($aAllRecetteSelected))?
+                $recetteModel->findAllRecetteFromListId(array_keys($aAllRecetteSelected))
                 : []
             ;
 
             foreach ($aAllInfosRecetteOfSemaine as $aRecette) {
+                // on en profite pour rajouter des infos dans la variable $aAllRecetteSelected
+                $aAllRecetteSelected[$aRecette['REC_ID']]['RECETTE'] = $aRecette;
+
                 $aAllIngredientOfRecette = $ingredientRecetteModel->findAllIngredientByRecette($aRecette['REC_ID']);
-                $aInfoInstanceRecette = $aAllIdRecetteSelected[$aRecette['REC_ID']];
+                $aInfoInstanceRecette = $aAllRecetteSelected[$aRecette['REC_ID']];
                 // casté en float pour s'assurer que le résultat prenne bien les décimales, c'est un entier car c'est le nombre de plat (personne)
                 $iNumberRecette = (float)$aInfoInstanceRecette['nombre'];
 
@@ -91,7 +94,7 @@ class SemaineController extends BaseController
             "aWeeksMove"                     => $aWeeksMove,
             "strDateDebutSemaine"            => $aWeeksMove['actualWeekDay'],
             "thisSemaine"                    => $thisSemaine,
-            "aAllInfosRecetteOfSemaine"      => $aAllInfosRecetteOfSemaine,
+            "aAllInfosRecetteOfSemaine"      => $aAllRecetteSelected,
             "aAllIngredientNeededForSemaine" => $aAllIngredientNeededForSemaine
         ));
     }

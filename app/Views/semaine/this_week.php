@@ -18,20 +18,20 @@
                 <?php foreach($aAllInfosRecetteOfSemaine as $aRecette): ?>
                     <div class="col-3 mb-2">
                         <div class="card">
-                            <h5 class="card-header bg-secondary" style="font-family: Viga"><?= $aRecette['REC_NOM'] ?> (<?= $aRecette['REC_DUREE'] ?> minutes)</h5>
+                            <h5 class="card-header bg-secondary" style="font-family: Viga"><?= $aRecette['RECETTE']['REC_NOM'] ?> (<?= $aRecette['RECETTE']['REC_DUREE'] ?> minutes)</h5>
                             <div class="card-body">
                                 <h5 class="card-title">QUAND PHOTO, AFFICHER</h5>
                             </div>
                             <div class="card-footer">
                                 <div class="row justify-content-center">
                                     <div class="col-3">
-                                        <button class="btn btn-info launch-follow-recette" data-recid="<?= $aRecette['REC_ID'] ?>"><i class="fa fa-list"></i></button>
+                                        <button class="btn btn-info launch-follow-recette" data-recid="<?= $aRecette['id'] ?>" data-nombre="<?= $aRecette['nombre'] ?>"><i class="fa fa-list"></i></button>
                                     </div>
                                     <div class="col-3">
-                                        <a href="<?= base_url("recettes/detail/" . $aRecette['REC_ID']) ?>"class="btn btn-info"><i class="fa fa-search"></i></a>
+                                        <a href="<?= base_url("recettes/detail/" . $aRecette['id']) ?>"class="btn btn-info"><i class="fa fa-search"></i></a>
                                     </div>
                                     <div class="col-3">
-                                        <button class="btn btn-info show-liste-ingredient" data-recid="<?= $aRecette['REC_ID'] ?>"><i class="fa fa-carrot"></i></button>
+                                        <button class="btn btn-info show-liste-ingredient" data-recid="<?= $aRecette['id'] ?>" data-nombre="<?= $aRecette['nombre'] ?>"><i class="fa fa-carrot"></i></button>
                                     </div>
                                 </div>
                             </div>

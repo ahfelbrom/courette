@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\HTTP\Response;
-// voir plus tard si on peut bloquer le controller uniquement pour des requêttes envoyées en ajax
+// voir plus tard si on peut bloquer le controller uniquement pour des requêtes envoyées en ajax
 class AjaxController extends BaseController
 {
     public function addRecette():Response
@@ -518,6 +518,16 @@ class AjaxController extends BaseController
 
                 $aAllIngredientOfRecette = $igeModel->findAllIngredientByRecette($aRecette['REC_ID']);
                 $aAllEtapeOfRecette = $etapeModel->findAllByRecette($aRecette['REC_ID']);
+                if ($this->request->getGet("nombre") !== null) {
+                    // casté en float pour s'assurer que le résultat prenne bien les décimales, c'est un entier car c'est le nombre de plat (personne)
+                    $iNumberRecette = (float)$this->request->getGet("nombre");
+                    // si j'ai un nombre qui est spécifié, il faut faire le compte des nombres d'ingrédients à afficher
+                    foreach($aAllIngredientOfRecette as &$aIngredient) {
+                        $fCastedNombre = (float) str_replace(",", ".", $aIngredient['IGE_NOMBRE']);
+                        // on doit faire en produit en croix pour avoir le résultat final
+                        $aIngredient['IGE_NOMBRE'] = ($fCastedNombre*$iNumberRecette)/(float)$aRecette['REC_NB_PERSONNE_BASE'];
+                    }
+                }
 
                 $strViewEtape = view('recette/content-follow-recette', [
                     "aAllEtapeOfRecette"      => $aAllEtapeOfRecette,
@@ -552,6 +562,16 @@ class AjaxController extends BaseController
                 $igeModel = model("IngredientRecetteModel");
 
                 $aAllIngredientOfRecette = $igeModel->findAllIngredientByRecette($aRecette['REC_ID']);
+                if ($this->request->getGet("nombre") !== null) {
+                    // casté en float pour s'assurer que le résultat prenne bien les décimales, c'est un entier car c'est le nombre de plat (personne)
+                    $iNumberRecette = (float)$this->request->getGet("nombre");
+                    // si j'ai un nombre qui est spécifié, il faut faire le compte des nombres d'ingrédients à afficher
+                    foreach($aAllIngredientOfRecette as &$aIngredient) {
+                        $fCastedNombre = (float) str_replace(",", ".", $aIngredient['IGE_NOMBRE']);
+                        // on doit faire en produit en croix pour avoir le résultat final
+                        $aIngredient['IGE_NOMBRE'] = ($fCastedNombre*$iNumberRecette)/(float)$aRecette['REC_NB_PERSONNE_BASE'];
+                    }
+                }
 
                 $aReturn['success'] = true;
                 $aReturn['error_message'] = "";

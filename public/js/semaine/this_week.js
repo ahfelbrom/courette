@@ -43,7 +43,7 @@ $(function(){
     $('.launch-follow-recette').click(function(){
         let that = $(this);
         $.ajax({
-            url: COMMON_BASE_URL + "recette/get_all_info_recette?recid=" + that.data('recid'),
+            url: COMMON_BASE_URL + "recette/get_all_info_recette?recid=" + that.data('recid') + "&nombre=" + that.data('nombre'),
             type: "GET",
             success: function(returnCall){
                 if (returnCall.success){
@@ -67,7 +67,7 @@ $(function(){
     $('.show-liste-ingredient').click(function(){
         let that = $(this);
         $.ajax({
-            url: COMMON_BASE_URL + "recette/get_all_ingredient_recette?recid=" + that.data('recid'),
+            url: COMMON_BASE_URL + "recette/get_all_ingredient_recette?recid=" + that.data('recid') + "&nombre=" + that.data('nombre'),
             type: "GET",
             beforeSend: function (xhr) {
                 $('#modal-liste-ingredient-recette').find(".modal-body").empty();
